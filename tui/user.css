@@ -1,0 +1,1084 @@
+/*
+                  _              __   _  ____               __          _
+    _____ ____   (_)_____ ___   / /_ (_)/ __/__  __        / /_ __  __ (_)
+   / ___// __ \ / // ___// _ \ / __// // /_ / / / /______ / __// / / // /
+  (__  )/ /_/ // // /__ /  __// /_ / // __// /_/ //_____// /_ / /_/ // /
+ /____// .___//_/ \___/ \___/ \__//_//_/   \__, /        \__/ \__,_//_/
+      /_/                                 /____/
+
+            https://github.com/AvinashReddy3108/spicetify-tui
+*/
+
+/*  ================================
+    ROOT
+    ================================ */
+
+/* import webfont */
+@import url("https://api.fonts.coollabs.io/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap");
+
+/* user settings */
+:root {
+  --font-family: "JetBrains Mono", monospace;
+
+  --display-card-image: block; /* none | block */
+  --display-coverart-image: none; /* none | block */
+  --display-header-image: none; /* none | block */
+  --display-library-image: block; /* none | block */
+  --display-tracklist-image: none; /* none | block */
+
+  --border-radius: 0px;
+  --border-width: 2px;
+  --border-style: solid; /* dotted | dashed | solid | double | groove | ridge | inset | outset */
+}
+
+/* font */
+* {
+  font-family: var(--font-family) !important;
+}
+
+.Root,
+.Root * {
+  text-shadow: none !important;
+}
+
+/* "Now playing" lyrics */
+.main-nowPlayingView-lyricsContent .lyrics-lyricsContent-lyric {
+  font-size: 1rem !important;
+  line-height: 1.2 !important;
+}
+
+/* images */
+.main-cardImage-imageWrapper img {
+  display: var(--display-card-image);
+}
+
+.main-coverSlotCollapsed-container {
+  display: var(--display-coverart-image);
+}
+
+.main-entityHeader-imageContainer,
+.under-main-view,
+.main-entityHeader-creatorWrapper .main-avatar-avatar,
+.main-entityHeader-imageContainer,
+.playlist-playlist-playlistImageContainer,
+.profile-userOverview-imageContainer {
+  display: var(--display-header-image);
+}
+
+.x-entityImage-imageContainer img,
+.main-yourLibraryX-rowCover img,
+.main-avatar-image {
+  display: var(--display-library-image);
+}
+
+.main-trackList-rowImage {
+  display: var(--display-tracklist-image);
+}
+
+/* fix */
+.Root__top-container {
+  --panel-gap: 16px !important;
+}
+
+.Root__top-bar {
+  border: var(--border-width) solid transparent;
+}
+
+.Root__main-view,
+.Root__nav-bar,
+.Root__now-playing-bar {
+  overflow: visible;
+}
+
+.main-view-container {
+  overflow: hidden;
+}
+
+.main-topBar-container {
+  width: 99.5%;
+}
+
+.main-topBar-background,
+.main-topBar-overlay {
+  background-color: var(--spice-main) !important;
+  background-image: none;
+}
+
+.main-globalNav-searchInputTextWrapper > span,
+.main-rootlist-topSentinel > div {
+  background-image: none !important;
+}
+
+.main-home-homeHeader {
+  background-color: transparent !important;
+  background-image: none;
+}
+
+.main-trackList-rowPlayCount {
+  width: 17ch;
+}
+
+.LayoutResizer__resize-bar {
+  cursor: w-resize;
+}
+
+.spotifyinternal-artistnpv .npv-what-is-playing .npv-cover-art,
+.spotifyinternal-artistnpv .npv-what-is-playing .npv-track {
+  bottom: 30em;
+}
+
+.spotifyinternal-artistnpv .npv-what-is-playing .npv-cover-art {
+  -webkit-transform: scale(0.34375);
+  transform: scale(0.34375);
+}
+
+.spotifyinternal-artistnpv .npv-what-is-playing .npv-track {
+  -webkit-transform: none;
+  transform: none;
+}
+
+.tr1hDrJgoPSbMXlXU_sl {
+  flex-direction: column-reverse;
+}
+
+.npv-main-container .playback-bar {
+  position: unset;
+  width: auto;
+}
+
+.mbUrqWP55sK6zhspiR72 {
+  height: auto;
+}
+
+.Root__right-sidebar > section,
+section.main-buddyFeed-container {
+  width: auto !important;
+}
+
+/* 1.2.11 backwards compatibility - for linux */
+
+/* pane borders */
+.main-yourLibraryX-entryPoints,
+.Root__main-view,
+.Root__now-playing-bar,
+.spotify__os--is-linux .Root__right-sidebar > div:nth-child(2) {
+  border: var(--border-width) var(--border-style) var(--spice-border-inactive);
+  border-radius: var(--border-radius) !important;
+  background-color: var(--spice-main) !important;
+}
+
+.main-yourLibraryX-entryPoints:hover,
+.Root__main-view:hover,
+.Root__now-playing-bar:hover,
+.spotify__os--is-linux .Root__right-sidebar > div:nth-child(2):hover {
+  border: var(--border-width) var(--border-style) var(--spice-border-active);
+}
+
+.main-nowPlayingBar-nowPlayingBar {
+  padding: 8px 8px 32px 8px !important;
+  height: 96px !important;
+}
+
+.Root__nav-bar {
+  gap: var(--panel-gap) !important;
+}
+
+.spotify__os--is-linux .Root__top-container {
+  padding-top: var(--panel-gap) !important;
+}
+
+/* recolor */
+:root {
+  --spice-main-elevated: var(--spice-main);
+  --spice-rgb-main-elevated: var(--spice-rgb-main);
+
+  --spice-highlight-elevated: var(--spice-highlight);
+  --spice-rgb-highlight-elevated: var(--spice-rgb-highlight);
+
+  --spice-sidebar: var(--spice-main);
+  --spice-rgb-sidebar: var(--spice-rgb-main);
+
+  --spice-player: var(--spice-main);
+  --spice-rgb-player: var(--spice-rgb-main);
+
+  --spice-card: var(--spice-main);
+  --spice-rgb-card: var(--spice-rgb-main);
+
+  --spice-shadow: var(--spice-main);
+  --spice-rgb-shadow: var(--spice-rgb-main);
+
+  --spice-selected-row: var(--spice-subtext);
+  --spice-rgb-selected-row: var(--spice-rgb-subtext);
+
+  --spice-button: var(--spice-accent);
+  --spice-rgb-button: var(--spice-rgb-accent);
+
+  --spice-button-active: var(--spice-accent-active);
+  --spice-rgb-button-active: var(--spice-rgb-accent-active);
+
+  --spice-button-disabled: var(--spice-accent-inactive);
+  --spice-rgb-button-disabled: var(--spice-rgb-accent-inactive);
+
+  --spice-tab-active: var(--spice-main);
+  --spice-rgb-tab-active: var(--spice-rgb-main);
+}
+
+.Root__top-container,
+.Root__nav-bar {
+  background-color: var(--spice-main);
+}
+
+.main-playPauseButton-button {
+  background-color: transparent;
+  color: var(--spice-subtext);
+}
+
+.main-playPauseButton-button:focus,
+.main-playPauseButton-button:hover {
+  transform: none;
+  color: var(--spice-text);
+}
+
+#_R_G *:not([fill="none"]) {
+  fill: var(--spice-button-active) !important;
+}
+
+#_R_G *:not([stroke="none"]) {
+  stroke: var(--spice-button-active);
+}
+
+.main-trackList-playingIcon {
+  filter: grayscale(1) opacity(0.45);
+}
+
+::placeholder {
+  color: var(--spice-subtext);
+}
+
+.main-entityHeader-background,
+.main-entityHeader-backgroundColor,
+.main-entityHeader-overlay,
+.main-actionBarBackground-background,
+.main-buddyFeed-container,
+.main-nowPlayingView-content.main-nowPlayingView-gradient {
+  background-color: transparent !important;
+  background: transparent;
+  background-image: none;
+}
+
+.progress-bar {
+  --fg-color: var(--spice-button-active);
+  --bg-color: var(--spice-button-disabled);
+}
+
+.playback-bar__progress-time-elapsed,
+.main-playbackBarRemainingTime-container {
+  mix-blend-mode: difference;
+  color: var(--spice-button-active);
+}
+
+.main-trackList-placeholder,
+.Pns6F5g4OEwEpdmOWTLg,
+.eldivguzYznZgQoShJbe {
+  background-color: var(--background-base);
+  background-blend-mode: color-dodge;
+}
+
+.artist-artistAbout-container.artist-artistAbout-backgroundImage
+  .artist-artistAbout-content
+  > div {
+  color: #fff;
+}
+
+.main-trackList-trackListHeaderStuck.main-trackList-trackListHeader {
+  background: var(--spice-main);
+}
+
+.main-trackList-trackListRow:focus-within,
+.main-trackList-trackListRow:hover,
+.main-contextMenu-menuItemButton:hover,
+.main-contextMenu-menuItemButton:not([aria-checked="true"]):focus,
+.BoxComponent-group-naked-listRow-isInteractive-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px:hover::after,
+.main-card-card:hover,
+.main-card-card[data-context-menu-open="true"] {
+  background-color: rgba(var(--spice-rgb-highlight), 0.5);
+}
+
+.main-trackList-trackListRow.main-trackList-selected,
+.main-trackList-trackListRow.main-trackList-selected:hover,
+.BoxComponent-group-tinted-listRow-isInteractive-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px,
+.BoxComponent-group-tinted-listRow-isInteractive-hasFocus-hasLeadingOrMedia-paddingBlockStart_8px-paddingBlockEnd_8px-minBlockSize_56px-padding_8px {
+  background-color: var(--spice-highlight);
+}
+
+.x-entityImage-imageContainer,
+.x-entityImage-imageContainer div,
+.fRZRXRIV2YBCFLYgwDAr {
+  background-color: var(--spice-border-inactive);
+  border-radius: var(--border-radius) !important;
+}
+
+.main-userWidget-boxCondensed,
+.main-userWidget-boxCondensed:focus-visible,
+.main-userWidget-boxCondensed:hover,
+.main-userWidget-boxCondensed[data-context-menu-open="true"] {
+  background-color: var(--spice-border-inactive) !important;
+}
+
+.main-cardImage-imageWrapper {
+  --card-color: var(--spice-border-inactive);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: var(--border-radius) !important;
+}
+
+/* pane borders */
+.main-yourLibraryX-entryPoints,
+.Root__main-view,
+.Root__now-playing-bar,
+.Root__right-sidebar .main-buddyFeed-container,
+.Root__right-sidebar
+  > :is(section:not(:empty), div:not(.LayoutResizer__resize-bar)) {
+  border: var(--border-width) var(--border-style) var(--spice-border-inactive);
+  border-radius: var(--border-radius) !important;
+  background-color: var(--spice-main);
+}
+
+.main-yourLibraryX-entryPoints:hover,
+.Root__main-view:hover,
+.Root__now-playing-bar:hover,
+.Root__right-sidebar .main-buddyFeed-container:hover,
+.Root__right-sidebar
+  > :is(section:not(:empty), div:not(.LayoutResizer__resize-bar)):hover {
+  border-color: var(--spice-border-active);
+}
+
+/* pane headers */
+.Root__nav-bar .main-yourLibraryX-entryPoints:nth-child(1)::before,
+.Root__nav-bar .main-yourLibraryX-entryPoints:nth-child(2)::before,
+.Root__main-view::before,
+.Root__now-playing-bar::before {
+  color: var(--spice-header);
+  position: absolute;
+  background: var(--spice-main);
+  padding: 0 3px;
+  z-index: 9;
+}
+
+.Root__nav-bar .main-yourLibraryX-entryPoints {
+  overflow: visible;
+  position: relative;
+}
+
+.Root__nav-bar .main-yourLibraryX-entryPoints::before {
+  top: 0;
+  left: 4px;
+  transform: translateY(-50%);
+}
+
+.Root__main-view::before,
+.Root__now-playing-bar::before {
+  margin: -10px 4px;
+}
+
+.Root__nav-bar .main-yourLibraryX-entryPoints:nth-child(1)::before {
+  content: "Pages";
+}
+
+.Root__nav-bar .main-yourLibraryX-entryPoints:nth-child(2)::before {
+  content: "Library";
+}
+
+.Root__main-view::before {
+  content: "Main";
+}
+
+.Root__now-playing-bar::before {
+  content: "Playing";
+}
+
+.Root__nav-bar .main-yourLibraryX-entryPoints:hover::before,
+.Root__main-view:hover::before,
+.Root__now-playing-bar:hover::before {
+  color: var(--spice-border-active);
+}
+
+/* right sidebar */
+.Root__right-sidebar .main-nowPlayingView-section {
+  overflow: hidden;
+  border: var(--border-width) var(--border-style) transparent;
+  border-radius: var(--border-radius) !important;
+  background-color: var(--spice-main);
+  padding: 12px;
+}
+
+.Root__right-sidebar .main-nowPlayingView-section:hover {
+  border-color: var(--spice-border-active);
+}
+
+.Root__right-sidebar
+  :is(
+    .main-nowPlayingView-section,
+    .main-nowPlayingView-onTourTimeCard,
+    .x-entityImage-imageContainer,
+    button,
+    .e-10180-legacy-button,
+    .e-10180-button-primary__inner
+  ) {
+  border-radius: var(--border-radius) !important;
+}
+
+.Root__right-sidebar .e-10180-button-primary__inner {
+  background-color: var(--spice-main);
+  color: var(--spice-text);
+  border: var(--border-width) var(--border-style) transparent;
+}
+
+.Root__right-sidebar
+  :is(.e-10180-button-primary__inner, .e-10180-legacy-button-secondary) {
+  padding: 4px 8px;
+}
+
+.Root__right-sidebar .e-10180-legacy-button-secondary {
+  border-color: transparent;
+  color: var(--spice-subtext);
+}
+
+.Root__right-sidebar
+  :is(
+    button:hover,
+    .e-10180-legacy-button:hover,
+    .main-nowPlayingView-section:hover
+  )
+  :is(.e-10180-button-primary__inner, .e-10180-legacy-button-secondary),
+.Root__right-sidebar .e-10180-legacy-button-secondary:hover {
+  border-color: var(--spice-border-active);
+  color: var(--spice-text);
+}
+
+.Root__right-sidebar
+  .main-nowPlayingView-sectionHeaderSpacing.main-nowPlayingView-lyricsGradient {
+  background-color: transparent;
+}
+
+.Root__right-sidebar .lyrics-lyricsContent-active:not(:empty) {
+  background-color: var(--spice-border-inactive);
+  color: var(--spice-text);
+}
+
+:is(
+  .main-globalNav-navLink,
+  .main-globalNav-link-icon,
+  .x-filterBox-expandButton,
+  .x-sortBox-sortDropdown,
+  .main-genericButton-button,
+  .main-trackList-rowAddToPlaylistButton,
+  .main-actionBar-shuffleButton,
+  .e-10180-button-tertiary--icon-only,
+  .e-10180-button-tertiary--condensed-all
+) {
+  border-radius: var(--border-radius) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+:is(
+  .e-10180-button-primary__inner,
+  .e-10180-button-icon-only--small,
+  .e-10180-button-icon-only--medium,
+  .e-10180-button-icon-only--large
+) {
+  border-radius: var(--border-radius) !important;
+  box-shadow: none !important;
+}
+
+.view-homeShortcutsGrid-shortcut {
+  border: var(--border-width) var(--border-style) transparent;
+  border-radius: var(--border-radius) !important;
+  background-color: var(--spice-main);
+  transition: none;
+}
+
+.view-homeShortcutsGrid-shortcut:hover {
+  border-color: var(--spice-border-active);
+}
+
+.view-homeShortcutsGrid-shortcutLink,
+.view-homeShortcutsGrid-image,
+.r10xDelHVNgJK_xY {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.view-homeShortcutsGrid-playButton {
+  border: var(--border-width) var(--border-style) var(--spice-button-active);
+  border-radius: var(--border-radius) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--spice-button-active);
+  padding: 6px;
+}
+
+.view-homeShortcutsGrid-playButton:hover {
+  border-color: var(--spice-border-active);
+  color: var(--spice-border-active);
+}
+
+.view-homeShortcutsGrid-playButton svg {
+  fill: currentColor;
+}
+
+/* dense home shelves */
+.main-home-content.contentSpacing {
+  gap: 12px 24px;
+  padding-inline: 28px;
+}
+
+.main-home-content .main-card-cardContainer.Card {
+  padding: 10px 10px 8px;
+  gap: 6px;
+}
+
+.main-home-content .main-card-imageContainer {
+  width: min(100%, 112px);
+}
+
+.main-home-content .main-cardImage-imageWrapper {
+  width: 100%;
+  padding-block-end: 100% !important;
+  filter: none;
+}
+
+.main-home-content .main-card-PlayButtonContainer {
+  box-shadow: none !important;
+}
+
+.main-home-content .e-10180-card__main {
+  gap: 8px;
+}
+
+.main-home-content .e-10180-card__column {
+  gap: 2px;
+}
+
+.main-home-content .main-card-cardTitle {
+  font-size: 0.95rem;
+  line-height: 1.15;
+}
+
+.main-home-content .main-card-cardMetadata {
+  font-size: 0.8rem;
+  line-height: 1.2;
+}
+
+.main-home-content .main-playButton-PlayButton {
+  transform: scale(0.82);
+  transform-origin: bottom right;
+}
+
+/* scrollbars */
+.os-theme-spotify
+  > .os-scrollbar-vertical
+  > .os-scrollbar-track
+  > .os-scrollbar-handle {
+  border-radius: var(--border-radius);
+  width: 2px;
+}
+
+.os-theme-spotify
+  > .os-scrollbar-vertical
+  > .os-scrollbar-track
+  > .os-scrollbar-handle:hover {
+  border-radius: var(--border-radius);
+  width: 6px;
+}
+
+.main-view-container__scroll-node > .os-scrollbar-vertical {
+  top: 5px !important;
+  right: 5px !important;
+}
+
+.os-scrollbar-handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* context menus */
+.main-contextMenu-menu {
+  border: var(--border-width) var(--border-style) var(--spice-border-active);
+  border-radius: var(--border-radius);
+}
+
+/* modals */
+.GenericModal {
+  border: var(--border-width) var(--border-style) var(--spice-border-active);
+  border-radius: var(--border-radius);
+  outline: 14px solid var(--spice-main) !important;
+}
+
+.GenericModal::before {
+  content: "Modal";
+  color: var(--spice-border-active);
+  position: absolute;
+  margin: -10px 4px;
+  background: var(--spice-main);
+  padding: 0 3px;
+  z-index: 9;
+}
+
+.artist-artistAbout-modal {
+  overflow: visible;
+}
+
+/*  ================================
+    LEFT SIDEBAR
+    ================================ */
+
+/* pages pane */
+.main-yourLibraryX-navLink {
+  height: 24px;
+  gap: 8px;
+}
+
+.main-yourLibraryX-navLink .home-icon,
+.main-yourLibraryX-navLink .search-icon,
+.main-yourLibraryX-navLinkActive .home-active-icon,
+.main-yourLibraryX-navLinkActive .search-active-icon,
+.main-yourLibraryX-header .main-yourLibraryX-collapseButtonWrapper > span {
+  transform: scale(0.6);
+}
+
+/* library pane */
+.main-yourLibraryX-isScrolled {
+  box-shadow: none;
+}
+
+.Wrapper-md-leading {
+  margin-right: 8px;
+}
+
+.main-yourLibraryX-listRowSubtitle {
+  display: none;
+}
+
+.main-yourLibraryX-listItemGroup {
+  grid-template-rows: 24px !important;
+  min-block-size: auto;
+  padding: 4px 18px;
+}
+
+.x-entityImage-imageContainer,
+.x-entityImage-imageContainer div,
+.main-yourLibraryX-rowCover {
+  height: 24px !important;
+  width: 24px !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.x-entityImage-imagePlaceholder,
+.main-yourLibraryX-rowCover .Svg-img-textBrightAccent-24-icon {
+  transform: scale(0.5);
+}
+
+/* sidebar config */
+.main-yourLibraryX-entryPoints:first-child:has(
+    .main-yourLibraryX-navItems:empty
+  ) {
+  display: none;
+}
+
+/*  ================================
+    MAIN VIEW
+    ================================ */
+
+/* top bar */
+.queue-tabBar-active,
+.marketplace-tabBar-active {
+  text-decoration: underline !important;
+}
+
+:is(.Root__main-view, .Root__nav-bar) [data-encore-id="chip"] {
+  color: var(--spice-subtext);
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  min-block-size: auto;
+  padding: 0 0 2px;
+}
+
+:is(.Root__main-view, .Root__nav-bar)
+  [data-encore-id="chip"]
+  .e-10180-legacy-chip__inner {
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 0;
+}
+
+:is(.Root__main-view, .Root__nav-bar) [data-encore-id="chip"]:hover,
+:is(.Root__main-view, .Root__nav-bar)
+  [data-encore-id="chip"]:is(
+    :focus-visible,
+    [aria-selected="true"],
+    [aria-checked="true"],
+    [aria-pressed="true"],
+    .e-10180-legacy-chip--selected
+  ),
+:is(.Root__main-view, .Root__nav-bar)
+  [data-encore-id="chip"]:is(
+    :focus-visible,
+    [aria-selected="true"],
+    [aria-checked="true"],
+    [aria-pressed="true"],
+    .e-10180-legacy-chip--selected
+  )
+  .e-10180-legacy-chip__inner {
+  color: var(--spice-text);
+  background: transparent !important;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.main-home-filterChipsSectionActive {
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+
+.main-home-filterChipsSectionActive::after {
+  background: transparent !important;
+  content: none !important;
+}
+
+.main-topBar-historyButtons .main-topBar-button,
+.main-topBar-buddyFeed {
+  background-color: transparent;
+}
+
+.main-topBar-button:first-child:before {
+  content: "<";
+}
+
+.main-topBar-button.main-topBar-forward::before {
+  content: ">";
+}
+
+.main-topBar-button:first-child > svg,
+.main-topBar-button.main-topBar-forward > svg {
+  display: none;
+}
+
+.main-topBar-topbarContent {
+  gap: 24px;
+}
+
+.x-searchInput-searchInputInput,
+.x-filterBox-filterInput {
+  border-radius: var(--border-radius) !important;
+  border: var(--border-width) var(--border-style) var(--spice-border-inactive);
+  background-color: transparent;
+}
+
+.x-searchInput-searchInputInput:hover,
+.x-searchInput-searchInputInput:focus,
+.x-filterBox-filterInput:hover,
+.x-filterBox-filterInput:focus {
+  box-shadow: none;
+  border: 1px solid var(--spice-button-active);
+  background-color: transparent;
+}
+
+.main-globalNav-searchInputWrapper .main-actionBar-ActionBarContainer {
+  border: var(--border-width) var(--border-style) var(--spice-border-inactive);
+  border-radius: var(--border-radius) !important;
+  background-color: var(--spice-main);
+  box-shadow: none !important;
+}
+
+.main-globalNav-searchInputWrapper .main-actionBar-ActionBarContainer:hover {
+  border-color: var(--spice-border-active);
+}
+
+.search-searchCategory-catergoryGrid * {
+  border-radius: var(--border-radius);
+}
+
+/* headers */
+.main-entityHeader-shadow {
+  box-shadow: none;
+}
+
+.main-entityHeader-container.main-entityHeader-withBackgroundImage {
+  background-image: none;
+}
+
+/* lyrics page & sidebar */
+.lyrics-lyrics-background {
+  background-color: var(--spice-main);
+}
+
+.main-nowPlayingView-sectionHeaderSpacing.main-nowPlayingView-lyricsGradient {
+  background-color: var(--background-tinted-base);
+}
+
+.lyrics-lyrics-contentContainer {
+  justify-content: start;
+}
+
+.lyrics-lyrics-container,
+.main-nowPlayingView-section {
+  --lyrics-color-active: var(--spice-text) !important;
+  --lyrics-color-inactive: var(--spice-subtext) !important;
+  --lyrics-color-passed: var(--spice-subtext) !important;
+  --lyrics-color-messaging: var(--spice-subtext) !important;
+}
+
+.lyrics-lyricsContent-lyric {
+  opacity: 0.3;
+  display: flex;
+  flex-direction: row;
+}
+
+.lyrics-lyricsContent-lyric.lyrics-lyricsContent-highlight {
+  opacity: 0.7;
+  transition: none;
+}
+
+.lyrics-lyricsContent-lyric.lyrics-lyricsContent-active:not(:empty) {
+  background-color: var(--lyrics-color-background);
+  color: var(--spice-main);
+  opacity: 1;
+  transition: none;
+}
+
+.lyrics-lyricsContent-lyric.lyrics-lyricsContent-active:not(:empty)::before {
+  content: ">> ";
+  opacity: 1;
+  white-space: break-spaces;
+}
+
+/* lyrics cinema */
+.main-lyricsCinema-lyricsCinemaVisible {
+  border: var(--border-width) var(--border-style) transparent;
+}
+
+/*  ================================
+    PLAYBACK BAR
+    ================================ */
+
+/* playback bar itself */
+.main-nowPlayingBar-nowPlayingBar {
+  padding: 8px 8px 32px 8px;
+  height: 96px;
+}
+
+.playback-bar {
+  position: absolute;
+  left: calc(var(--panel-gap) + 8px);
+  bottom: calc(var(--panel-gap) + 8px);
+  width: calc(100vw - var(--panel-gap) * 2 - 16px);
+  justify-content: center;
+}
+
+/* playback time indicators */
+.playback-bar__progress-time-elapsed {
+  pointer-events: none;
+}
+
+.playback-bar__progress-time-elapsed::after {
+  content: " /";
+}
+
+.playback-bar__progress-time-elapsed,
+.main-playbackBarRemainingTime-container {
+  z-index: 9;
+  padding-top: 2px;
+}
+
+/* playback seek bar */
+.playback-bar > .playback-progressbar {
+  position: absolute;
+}
+
+.progress-bar {
+  --progress-bar-height: 16px;
+  --progress-bar-radius: var(--border-radius);
+}
+
+.playback-bar .playback-progressbar > div {
+  --progress-bar-height: 32px;
+}
+
+.playback-bar
+  :is(
+    .x-progressBar-fillColor,
+    .x-progressBar-progressBarBg,
+    .x-progressBar-sliderArea,
+    .x-progressBar-progressFillColor
+  ) {
+  height: 14px;
+}
+
+:is(.playback-bar, .volume-bar__slider-container) .playback-progressbar > div {
+  --progress-bar-radius: 0 !important;
+}
+
+:is(.playback-bar, .volume-bar__slider-container)
+  :is(
+    .progress-bar__slider,
+    .x-progressBar-fillColor,
+    .x-progressBar-progressBarBg,
+    .x-progressBar-sliderArea,
+    .x-progressBar-progressFillColor
+  ) {
+  border-radius: 0 !important;
+}
+
+.progress-bar__slider {
+  box-shadow: none;
+  height: 100%;
+  border-radius: 0;
+}
+
+/* cover art */
+.cover-art,
+kbd {
+  box-shadow: none !important;
+}
+
+.main-nowPlayingWidget-coverArt .cover-art {
+  height: 32px !important;
+  width: 32px !important;
+}
+
+[dir="ltr"] .main-coverSlotCollapsed-navAltContainer {
+  -webkit-transform: none;
+  transform: none;
+}
+
+[dir="ltr"] .main-nowPlayingWidget-coverExpanded {
+  transform: translateX(-40px);
+}
+
+[dir="ltr"]
+  .main-nowPlayingWidget-coverExpanded
+  .main-coverSlotCollapsed-container.main-coverSlotCollapsed-navAltContainer {
+  opacity: 0;
+}
+
+/* volume bar */
+.volume-bar__slider-container .playback-progressbar > div {
+  --fg-color: transparent;
+  --is-active-fg-color: transparent;
+  --volume-bar-fill: var(--spice-subtext);
+}
+
+.volume-bar__slider-container:hover .playback-progressbar > div,
+.volume-bar__slider-container:focus-within .playback-progressbar > div {
+  --volume-bar-fill: var(--spice-button-active);
+}
+
+.volume-bar__slider-container .x-progressBar-fillColor {
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--volume-bar-fill) 0 5px,
+    transparent 5px 8px
+  );
+}
+
+.volume-bar__slider-container .progress-bar__slider {
+  background-color: var(--spice-text);
+}
+
+.volume-bar__slider-container .x-progressBar-progressBarBg,
+.volume-bar__slider-container .x-progressBar-sliderArea {
+  background: transparent;
+}
+
+.volume-bar__slider-container .x-progressBar-progressFillColor {
+  visibility: hidden !important;
+}
+
+/* player controls */
+.player-controls__buttons {
+  margin-bottom: 0;
+}
+
+.player-controls__buttons,
+.main-nowPlayingBar-extraControls {
+  opacity: 0.25;
+}
+
+.player-controls__buttons:hover,
+.main-nowPlayingBar-extraControls:hover {
+  opacity: 1;
+}
+
+.main-shuffleButton-button::before {
+  content: "\21C4";
+}
+
+.main-skipBackButton-button::before {
+  content: "\25C1";
+}
+
+.main-playPauseButton-button[aria-label="Play"]::before,
+.main-playPauseButton-button:has(
+    path[d="M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"]
+  )::before,
+.main-playPauseButton-button:has(
+    path[d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"]
+  )::before {
+  content: "\25B6";
+}
+
+.main-playPauseButton-button[aria-label="Pause"]::before,
+.main-playPauseButton-button:has(
+    path[d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z"]
+  )::before,
+.main-playPauseButton-button:has(
+    path[d="M5.7 3a.7.7 0 0 0-.7.7v16.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V3.7a.7.7 0 0 0-.7-.7H5.7zm10 0a.7.7 0 0 0-.7.7v16.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V3.7a.7.7 0 0 0-.7-.7h-2.6z"]
+  )::before {
+  content: "\275A\275A";
+}
+
+.main-skipForwardButton-button::before {
+  content: "\25B7";
+}
+
+.main-repeatButton-button::before {
+  content: "\21BB";
+}
+
+.main-shuffleButton-button > svg,
+.main-skipBackButton-button > svg,
+.main-playPauseButton-button > svg,
+.main-skipForwardButton-button > svg,
+.main-repeatButton-button > svg {
+  display: none;
+}
+
+/* connect bar */
+.nav-ylx .main-connectBar-connectBar {
+  position: absolute;
+  background-color: transparent !important;
+  color: var(--spice-accent-active) !important;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  right: var(--panel-gap);
+  bottom: var(--panel-gap);
+  padding: 17px;
+  opacity: 0.25;
+  border-radius: var(--border-radius) !important;
+}
+
+.main-connectBar-connectBar {
+  border-radius: var(--border-radius) !important;
+}
+
+.main-devicePicker-indicator.main-devicePicker-connected {
+  display: none;
+}
