@@ -801,6 +801,16 @@ section.main-buddyFeed-container {
   border-color: var(--spice-border-active);
 }
 
+.main-globalNav-searchInputContainer
+  > :first-child:not(.main-globalNav-searchInputWrapper) {
+  display: none !important;
+}
+
+.main-globalNav-searchInputContainer
+  :is(.main-topBar-searchBar, .x-searchInput-searchInputInput) {
+  padding-left: 16px !important;
+}
+
 .search-searchCategory-catergoryGrid * {
   border-radius: var(--border-radius);
 }
