@@ -6,12 +6,12 @@ Forked from [AvinashReddy3108/spicetify-tui](https://github.com/AvinashReddy3108
 
 ## Features
 
-- **TUI layout** — every pane gets a labeled border (`Pages`, `Library`, `Main`, `Playing`), plus a `Modal` label on dialogs
-- **Monospace everything** — JetBrains Mono applied across the whole client
-- **ASCII player controls** — shuffle, skip, play/pause, and repeat rendered as text glyphs instead of icons
-- **Distraction-free toggles** — show or hide card, cover-art, header, library, and tracklist images via CSS variables
-- **15 color schemes** — Spotify, Spicetify, Catppuccin (Mocha/Macchiato/Latte), Dracula, Gruvbox, Kanagawa, Nord, Rigel, Rose Pine (base/Moon), Solarized, Tokyo Night (base/Storm)
-- **Two files only** — `tui/color.ini` (palettes) + `tui/user.css` (layout), no JS or assets to maintain
+- **TUI layout:** every pane gets a labeled border (`Pages`, `Library`, `Main`, `Playing`), plus a `Modal` label on dialogs
+- **Monospace everything:** JetBrains Mono applied across the whole client
+- **ASCII player controls:** shuffle, skip, play/pause, and repeat rendered as text glyphs instead of icons
+- **Distraction-free toggles:** show or hide card, cover-art, header, library, and tracklist images via CSS variables
+- **15 color schemes:** Spotify, Spicetify, Catppuccin (Mocha/Macchiato/Latte), Dracula, Gruvbox, Kanagawa, Nord, Rigel, Rose Pine (base/Moon), Solarized, Tokyo Night (base/Storm)
+- **Two files only:** `tui/color.ini` (palettes) + `tui/user.css` (layout), no JS or assets to maintain
 
 ## Color schemes
 
@@ -72,7 +72,7 @@ spicetify config color_scheme Nord
 spicetify apply
 ```
 
-Available names are the exact `[Section]` headers from `tui/color.ini` — the match is case-sensitive (`Gruvbox`, not `gruvbox`).
+Available names are the exact `[Section]` headers from `tui/color.ini`. Matching is case-insensitive, so `Gruvbox` and `gruvbox` both work.
 
 Revert to stock Spotify:
 
@@ -103,7 +103,7 @@ For the full TUI look, set every `--display-*-image` to `none`.
 
 ### `spicetify apply` warns `Color scheme 'X' not found`
 
-The scheme is looked up in the **active theme's** `color.ini`, not globally. This happens when `current_theme` points at the wrong folder (e.g. `marketplace`, whose `color.ini` only defines `[Marketplace]`). Fix:
+Spicetify looks up the scheme in the **active theme's** `color.ini`, not globally. This happens when `current_theme` points at the wrong folder (e.g. `marketplace`, whose `color.ini` only defines `[Marketplace]`). Fix:
 
 ```sh
 spicetify config current_theme tui color_scheme Gruvbox
@@ -119,11 +119,11 @@ spicetify apply
 ### `error: File name "xpui.js" is not found`
 
 > [!WARNING]
-> Do **not** add the legacy `[Patch]` snippet (`xpui.js_find_8008`) recommended by older guides. Recent Spotify clients split `xpui.js` into many chunk files, so that patch can never match and every apply ends with an error. This fork does not need it — a clean `config-xpui.ini` has an empty `[Patch]` section.
+> Do **not** add the legacy `[Patch]` snippet (`xpui.js_find_8008`) recommended by older guides. Recent Spotify clients split `xpui.js` into many chunk files, so that patch can never match and every apply ends with an error. This fork does not need it: a clean `config-xpui.ini` has an empty `[Patch]` section.
 
 ## Acknowledgements
 
-- [AvinashReddy3108/spicetify-tui](https://github.com/AvinashReddy3108/spicetify-tui) — the original theme this fork is based on
-- [@darkthemer's text theme](https://github.com/darkthemer) — initial inspiration for the upstream project
-- [spotify-tui](https://github.com/Rigellute/spotify-tui) — the terminal UI this theme mimics
-- [Spicetify](https://spicetify.app/docs/customization/themes) — theming docs (install, schemes, troubleshooting)
+- [AvinashReddy3108/spicetify-tui](https://github.com/AvinashReddy3108/spicetify-tui): the original theme this fork is based on
+- [@darkthemer's text theme](https://github.com/darkthemer): initial inspiration for the upstream project
+- [spotify-tui](https://github.com/Rigellute/spotify-tui): the terminal UI this theme mimics
+- [Spicetify](https://spicetify.app/docs/customization/themes): theming docs (install, schemes, troubleshooting)
